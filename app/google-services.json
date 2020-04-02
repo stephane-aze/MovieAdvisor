@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "748667578892",
+    "firebase_url": "https://filmadvisor-b6e38.firebaseio.com",
+    "project_id": "filmadvisor-b6e38",
+    "storage_bucket": "filmadvisor-b6e38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748667578892:android:112f590709731185a31c29",
+        "android_client_info": {
+          "package_name": "com.masterAljAAR.films"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748667578892-2ailpp2t08p16u7l48ih6jsmlndtkr77.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8e1xzdXKNDTKksV01lRCKjYvqdzeLPrM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748667578892-2ailpp2t08p16u7l48ih6jsmlndtkr77.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
