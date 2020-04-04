@@ -10,12 +10,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
+
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-    // private lateinit var mAuth: FirebaseAuth
+
     var isStarted = false
     var progressStatus = 0
     var handler: Handler? = null
@@ -38,11 +38,7 @@ class MainActivity : AppCompatActivity() {
         return@OnNavigationItemSelectedListener false
     }
 
-   /* override fun onStart() {
-        super.onStart()
-        val currentUser = mAuth!!.currentUser
-        updateUI(currentUser)
-    }*/
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -51,8 +47,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
 
-        //initialize the FirebaseAuth
-        // mAuth = FirebaseAuth.getInstance()
 
         /*handler = Handler(Handler.Callback {
             if (isStarted) {
