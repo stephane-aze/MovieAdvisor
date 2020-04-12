@@ -12,10 +12,14 @@
     <string name="forgot_password">Mot de passe oublié?</string>
     <string name="inscription">Inscription</string>
     <string name="search">Recherche</string>
-    <string name="eff">eff</string>
-    <string name="fezfr">fezfr</string>
-    <string name="feefe">feefe</string>
+    <string name="messages">Mes avis</string>
+    <!-- Facebook -->
+    <string name="facebook_app_id">1336244529913957</string>
+    <string name="fb_login_protocol_scheme">fb1336244529913957</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profiles">Profil</string>
+    <string name="repeat_password">Confirmation du mot de passe</string>
+    <string name="username">Nom</string>
 </resources>

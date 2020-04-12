@@ -8,10 +8,11 @@
         android:title="@string/search"
         app:actionViewClass="android.widget.SearchView" />
     <item
-        android:id="@+id/feefe"
-        android:icon="@android:drawable/btn_star"
-        android:title="@string/feefe" />
-    <item android:id="@+id/eff"
-        android:title="@string/eff"/>
+        android:id="@+id/messages"
+        android:icon="@android:drawable/stat_notify_chat"
+        android:title="@string/messages" />
+    <item
+        android:id="@+id/profil"
+        android:title="@string/profiles" />
 
 </menu>

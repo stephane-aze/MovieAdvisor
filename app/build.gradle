@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.masterAljAAR.films"
-        minSdkVersion 24
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -38,13 +38,17 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     implementation 'com.google.android.material:material:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.google.android.gms:play-services-auth:17.0.0'
 
     implementation 'com.android.support:appcompat-v7:29.0.0'
     implementation 'com.android.support:support-v4:29.0.0'
     implementation 'com.android.support:design:29.0.0'
 
+    //Fuel
+    implementation 'com.github.kittinunf.fuel:fuel-android:1.15.1'
+    //Facebook
     implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
+    //Google
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
     //Room
     /*implementation "androidx.room:room-ktx:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
