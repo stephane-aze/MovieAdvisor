@@ -74,12 +74,12 @@ class LoginActivity :  AppCompatActivity()  {
 
     private fun onTaskCompleted(response: String, task: Int) {
         Log.d("responsejson", response)
+
         when (task) {
             LoginTask -> if (isSuccess(response)) {
                 saveInfo(response)
                 Toast.makeText(this@LoginActivity, "Login Successfully!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 this.finish()
             } else {
@@ -92,14 +92,10 @@ class LoginActivity :  AppCompatActivity()  {
         preferenceHelper!!.putIsLogin(true)
         try {
             val jsonObject = JSONObject(response)
-            if (jsonObject.getString("status") == "true") {
-                val dataArray = jsonObject.getJSONArray("data")
-                for (i in 0 until dataArray.length()) {
 
-                    val dataobj = dataArray.getJSONObject(i)
-                    preferenceHelper!!.putName(dataobj.getString("pseudo"))
-                }
-            }
+            preferenceHelper!!.putEmail(jsonObject.getString("email"))
+
+            preferenceHelper!!.putName(jsonObject.getString("pseudo"))
         } catch (e: JSONException) {
             e.printStackTrace()
         }
@@ -107,9 +103,13 @@ class LoginActivity :  AppCompatActivity()  {
     }
 
     fun isSuccess(response: String): Boolean {
+
         try {
             val jsonObject = JSONObject(response)
-            return jsonObject.optString("status") == "true"
+            if(jsonObject.optString("email")!=""){
+                return true
+            }
+            return false
 
         } catch (e: JSONException) {
             e.printStackTrace()
@@ -121,7 +121,7 @@ class LoginActivity :  AppCompatActivity()  {
     fun getErrorMessage(response: String): String {
         try {
             val jsonObject = JSONObject(response)
-            return jsonObject.getString("message")
+            return jsonObject.getString("status")
 
         } catch (e: JSONException) {
             e.printStackTrace()

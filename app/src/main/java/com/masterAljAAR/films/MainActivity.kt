@@ -67,10 +67,11 @@ class MainActivity : AppCompatActivity() {
         bottom_nav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         preferenceHelper = PreferenceHelper(this)
-
-    val intent = Intent(applicationContext, HomeActivity::class.java)
-    startActivity(intent)
-    finish()/**/
+        if (!preferenceHelper.getIsLogin()) {
+            val intent = Intent(applicationContext, HomeActivity::class.java)
+            startActivity(intent)
+            finish()/**/
+        }
 
 
 /*handler = Handler(Handler.Callback {

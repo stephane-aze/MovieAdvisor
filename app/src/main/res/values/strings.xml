@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">FilmAdvisor</string>
-    <string name="intro">Bienvenue dans FilmAdvisor</string>
+    <string name="app_name">MovieAdvisor</string>
+    <string name="intro">Bienvenue dans MovieAdvisor</string>
     <string name="login">Se connecter</string>
     <string name="d_connexion">Déconnexion</string>
     <string name="register">S\'inscrire</string>
-    <string name="mot_de_passe">Mot de passe</string>
+    <string name="password">Mot de passe</string>
     <string name="email">Email</string>
     <string name="connexion">Connexion</string>
     <string name="login_with">Se connecter avec</string>
@@ -22,4 +22,5 @@
     <string name="profiles">Profil</string>
     <string name="repeat_password">Confirmation du mot de passe</string>
     <string name="username">Nom</string>
+    <string name="google_login">Se connecter avec google</string>
 </resources>

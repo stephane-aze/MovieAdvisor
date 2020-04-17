@@ -6,6 +6,7 @@ class PreferenceHelper(private val context: Context) {
 
     private val INTRO = "intro"
     private val NAME = "name"
+    private val EMAIL = "email"
 
     private val app_prefs: SharedPreferences
 
@@ -35,6 +36,14 @@ class PreferenceHelper(private val context: Context) {
     fun getNames(): String? {
         return app_prefs.getString(NAME, "")
     }
+    fun putEmail(loginorout: String) {
+        val edit = app_prefs.edit()
+        edit.putString(EMAIL, loginorout)
+        edit.commit()
+    }
 
+    fun getEmail(): String? {
+        return app_prefs.getString(EMAIL, "")
+    }
 
 }
