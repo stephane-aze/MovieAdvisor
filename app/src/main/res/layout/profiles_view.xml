@@ -11,24 +11,24 @@
         android:layout_width="161dp"
         android:layout_height="151dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/com_facebook_profile_picture_blank_portrait" />
 
     <TextView
-        android:id="@+id/profile_text"
+        android:id="@+id/profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/profile_image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="80dp"
         android:text="Irshad Kumail"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
@@ -36,18 +36,21 @@
         android:id="@+id/profile_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/profile_text"
+        android:layout_below="@id/profile_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="85dp"
         android:text="irshadkumail@gmail.com"
         android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/sign_out"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_text" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_name"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/sign_out"
-        android:layout_width="360dp"
+        android:layout_width="0dp"
         android:layout_height="52dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

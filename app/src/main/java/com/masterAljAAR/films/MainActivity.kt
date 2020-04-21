@@ -30,32 +30,21 @@ class MainActivity : AppCompatActivity() {
     lateinit var list: ListView
     private lateinit var preferenceHelper: PreferenceHelper
 
-    var maintitle = arrayOf(
-        "Title 1", "Title 2",
-        "Title 3", "Title 4",
-        "Title 5"
-    )
-
-    var subtitle = arrayOf(
-        "Sub Title 1", "Sub Title 2",
-        "Sub Title 3", "Sub Title 4",
-        "Sub Title 5"
-    )
-
-    var imgid = arrayOf<Int>(
-
-    )
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
             item->when(item.itemId){
                 R.id.app_bar_search -> {
                     replaceFragment(SearchFragment())
-                    println("Ok Search")
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.messages -> {
                     println("Ok feefe")
                     return@OnNavigationItemSelectedListener true
                 }
+                R.id.profiles -> {
+                    replaceFragment(ProfilesFragment())
+                    return@OnNavigationItemSelectedListener true
+                }
+
             }
         return@OnNavigationItemSelectedListener false
     }
@@ -67,98 +56,59 @@ class MainActivity : AppCompatActivity() {
         bottom_nav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         preferenceHelper = PreferenceHelper(this)
+
         if (!preferenceHelper.getIsLogin()) {
             val intent = Intent(applicationContext, HomeActivity::class.java)
             startActivity(intent)
             finish()/**/
         }
+     /**/
 
-
-/*handler = Handler(Handler.Callback {
-    if (isStarted) {
-        progressStatus++
-    }
-    progressBarHorizontal.progress = progressStatus
-    textViewHorizontalProgress.text = "${progressStatus}/${progressBarHorizontal.max}"
-    handler?.sendEmptyMessageDelayed(0, 100)
-
-    true
-})
-
-handler?.sendEmptyMessage(0)*/
-
-val adapter = ListViewFilm(this, maintitle, subtitle, imgid)
-list = findViewById<View>(R.id.list) as ListView
-list.adapter = adapter
-
-
-list.onItemClickListener =
-    OnItemClickListener { parent, view, position, id ->
-        // TODO Auto-generated method stub
-        if (position == 0) {
-            //code specific to first list item
-            Toast.makeText(
-                applicationContext,
-                "Place Your First Option Code",
-                Toast.LENGTH_SHORT
-            ).show()
-        } else if (position == 1) {
-            //code specific to 2nd list item
-            Toast.makeText(
-                applicationContext,
-                "Place Your Second Option Code",
-                Toast.LENGTH_SHORT
-            ).show()
-        } else if (position == 2) {
-            Toast.makeText(
-                applicationContext,
-                "Place Your Third Option Code",
-                Toast.LENGTH_SHORT
-            ).show()
-        } else if (position == 3) {
-            Toast.makeText(
-                applicationContext,
-                "Place Your Forth Option Code",
-                Toast.LENGTH_SHORT
-            ).show()
-        } else if (position == 4) {
-            Toast.makeText(
-                applicationContext,
-                "Place Your Fifth Option Code",
-                Toast.LENGTH_SHORT
-            ).show()
+    /*handler = Handler(Handler.Callback {
+        if (isStarted) {
+            progressStatus++
         }
-    }
-}
-private fun replaceFragment(fragment: Fragment){
-val fragmentTransaction = supportFragmentManager.beginTransaction()
-fragmentTransaction.replace(R.id.fragmentContainer,fragment)
-fragmentTransaction.commit()
-}
-override fun onCreateOptionsMenu(menu: Menu): Boolean {
-// Inflate the menu; this adds items to the action bar if it is present.
-menuInflater.inflate(
-    R.menu.main_menu,
-    menu
-)
-return true
-}
-override fun onOptionsItemSelected(item: MenuItem): Boolean {
-return when (item.itemId) {
-    R.id.action_logout -> {
-            preferenceHelper.putIsLogin(false)
-            val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            finish()
+        progressBarHorizontal.progress = progressStatus
+        textViewHorizontalProgress.text = "${progressStatus}/${progressBarHorizontal.max}"
+        handler?.sendEmptyMessageDelayed(0, 100)
 
         true
+    })
+
+    handler?.sendEmptyMessage(0)*/
+            replaceFragment(SearchFragment())
+
     }
-    else -> super.onOptionsItemSelected(item)
-}
-}/**/
-/*override fun logout(menu: Menu?): Boolean{
-return false
-}*/
+    private fun replaceFragment(fragment: Fragment){
+    val fragmentTransaction = supportFragmentManager.beginTransaction()
+    fragmentTransaction.replace(R.id.fragmentContainer,fragment)
+    fragmentTransaction.commit()
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    // Inflate the menu; this adds items to the action bar if it is present.
+    menuInflater.inflate(
+        R.menu.main_menu,
+        menu
+    )
+    return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_logout -> {
+                    logout()
+
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }/**/
+     fun logout() {
+
+        preferenceHelper!!.putIsLogin(false)
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+
+    }
 
 }

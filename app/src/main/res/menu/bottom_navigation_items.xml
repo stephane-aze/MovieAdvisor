@@ -6,13 +6,15 @@
         android:id="@+id/app_bar_search"
         android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/search"
+        android:state_pressed="true"
         app:actionViewClass="android.widget.SearchView" />
     <item
         android:id="@+id/messages"
         android:icon="@android:drawable/stat_notify_chat"
         android:title="@string/messages" />
     <item
-        android:id="@+id/profil"
+        android:id="@+id/profiles"
+        android:icon="@drawable/icon_user"
         android:title="@string/profiles" />
 
 </menu>

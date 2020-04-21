@@ -18,6 +18,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
+import kotlinx.android.synthetic.main.activity_home.*
 
 
 class HomeActivity :  AppCompatActivity() {
@@ -29,7 +30,7 @@ class HomeActivity :  AppCompatActivity() {
     private lateinit var callbackManager: CallbackManager
     private val EMAIL = "email"
     private lateinit var accessTokenTracker: AccessTokenTracker
-    private var btnlogout: Button? = null
+    private var btnTest: Button? = null
     private var preferenceHelper: PreferenceHelper? = null
     private val TAG = "AndroidClarified"
     override fun onStart() {
@@ -52,14 +53,11 @@ class HomeActivity :  AppCompatActivity() {
         createUser = findViewById(R.id.new_user)
         loginBtn = findViewById(R.id.buttonLogin)
         signInButton = findViewById(R.id.sign_in_button)
-        btnlogout =findViewById(R.id.btnlogout)
-        //Deconnexion
+        btnTest =findViewById(R.id.btnTest)
+        //Pour faire les tests
         preferenceHelper = PreferenceHelper(this)
-        btnlogout!!.setOnClickListener {
-            preferenceHelper!!.putIsLogin(false)
-            val intent = Intent(applicationContext, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+        btnTest!!.setOnClickListener {
+
         }
 
 
@@ -110,7 +108,7 @@ class HomeActivity :  AppCompatActivity() {
                 oldAccessToken: AccessToken,
                 currentAccessToken: AccessToken
             ) {
-                val intent = Intent(applicationContext, HomeActivity::class.java)
+                val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
 
@@ -135,23 +133,6 @@ class HomeActivity :  AppCompatActivity() {
             }
         }
 
-    }
-    fun loadUserProfile(accessToken: AccessToken){
-        val request = GraphRequest.newMeRequest(accessToken,
-            GraphRequest.GraphJSONObjectCallback { `object`, response ->
-                try {
-                    val name = `object`.getString("name")
-                    val email = `object`.getString("email")
-                    val id = `object`.getString("id")
-
-                } catch (e: Exception) {
-
-                }
-            })
-        val parameters = Bundle()
-        parameters.putString("fields", "id,name,email")
-        request.parameters = parameters
-        request.executeAsync()
     }
     override fun onDestroy() {
         super.onDestroy()
