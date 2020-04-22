@@ -45,17 +45,21 @@ class HomeActivity :  AppCompatActivity() {
 
         // updateUI(account)
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+    private fun init(){
         // Assigned the elements in the var
         createUser = findViewById(R.id.new_user)
         loginBtn = findViewById(R.id.buttonLogin)
         signInButton = findViewById(R.id.sign_in_button)
         btnTest =findViewById(R.id.btnTest)
-        //Pour faire les tests
         preferenceHelper = PreferenceHelper(this)
+
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+        init()
+
+        //Pour faire les tests
         btnTest!!.setOnClickListener {
 
         }

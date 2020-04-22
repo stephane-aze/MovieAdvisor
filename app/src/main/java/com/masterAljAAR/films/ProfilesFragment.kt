@@ -25,13 +25,15 @@ class ProfilesFragment: Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.profiles_view, container, false)
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun init(view: View){
         profileName = view.findViewById(R.id.profile_name)
         profileEmail = view.findViewById(R.id.profile_email)
         profileImage = view.findViewById(R.id.profile_image)
         signOut = view.findViewById(R.id.sign_out)
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init(view)
         setDataOnView();
 
     }

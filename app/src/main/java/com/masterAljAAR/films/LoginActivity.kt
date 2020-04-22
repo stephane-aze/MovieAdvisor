@@ -30,16 +30,11 @@ class LoginActivity :  AppCompatActivity()  {
     private var preferenceHelper: PreferenceHelper? = null
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        init()
 
-        forgotPassword = findViewById(R.id.forgotPassword)
-        loginPassword = findViewById(R.id.LoginPassword)
-        loginEmail = findViewById(R.id.LoginEmail)
-        btnlogin = findViewById(R.id.login)
-        preferenceHelper = PreferenceHelper(this)
         btnlogin.setOnClickListener {
             try {
                 login()
@@ -49,6 +44,13 @@ class LoginActivity :  AppCompatActivity()  {
                 e.printStackTrace()
             }
         }
+    }
+    private fun init(){
+        forgotPassword = findViewById(R.id.forgotPassword)
+        loginPassword = findViewById(R.id.LoginPassword)
+        loginEmail = findViewById(R.id.LoginEmail)
+        btnlogin = findViewById(R.id.login)
+        preferenceHelper = PreferenceHelper(this)
     }
 
 
@@ -88,7 +90,7 @@ class LoginActivity :  AppCompatActivity()  {
         }
     }
 
-    fun saveInfo(response: String) {
+    private fun saveInfo(response: String) {
         preferenceHelper!!.putIsLogin(true)
         try {
             val jsonObject = JSONObject(response)
@@ -102,7 +104,7 @@ class LoginActivity :  AppCompatActivity()  {
 
     }
 
-    fun isSuccess(response: String): Boolean {
+    private fun isSuccess(response: String): Boolean {
 
         try {
             val jsonObject = JSONObject(response)
@@ -118,7 +120,7 @@ class LoginActivity :  AppCompatActivity()  {
         return false
     }
 
-    fun getErrorMessage(response: String): String {
+    private fun getErrorMessage(response: String): String {
         try {
             val jsonObject = JSONObject(response)
             return jsonObject.getString("status")
