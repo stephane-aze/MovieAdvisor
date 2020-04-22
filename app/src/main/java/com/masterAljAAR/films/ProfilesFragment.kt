@@ -1,5 +1,6 @@
 package com.masterAljAAR.films
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,10 +20,12 @@ class ProfilesFragment: Fragment() {
     private  var profileEmail:TextView? = null
     private var profileImage: ImageView? = null
     private var signOut: Button? = null
+    private var preferenceHelper: PreferenceHelper? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+        preferenceHelper = PreferenceHelper(requireContext())
         return inflater.inflate(R.layout.profiles_view, container, false)
     }
     private fun init(view: View){
@@ -34,7 +37,9 @@ class ProfilesFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init(view)
-        setDataOnView();
+        setDataOnView()
+
+
 
     }
     private fun setDataOnView() {
@@ -44,6 +49,9 @@ class ProfilesFragment: Fragment() {
                 .into(profileImage)
             profileName!!.text = acct.getDisplayName()
             profileEmail!!.text = acct.getEmail()
+        }else if(preferenceHelper!!.getIsLogin()){
+            profileName!!.text = preferenceHelper!!.getNames()
+            profileEmail!!.text = preferenceHelper!!.getEmail()
         }
     }
 }

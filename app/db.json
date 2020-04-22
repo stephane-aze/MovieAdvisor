@@ -1,36 +1,8 @@
-package com.masterAljAAR.films
-
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-
-import kotlinx.android.synthetic.main.fragment_search.*
-import org.json.JSONArray
-
-data class Movie(val title: String, val overview: String, val vote_average: Double, val poster_path: String )
-
-class SearchFragment : Fragment() {
-
-    private lateinit var rootView: View
-    private lateinit var recyclerView: RecyclerView
-
-    private val nicCageMovies = listOf(
-        Movie("Star Wars VIII - Les derniers Jedi",
-            "Nouvel épisode de la saga. Les héros du Réveil de la force rejoignent les figures légendaires de la galaxie dans une aventure épique qui...",
-            7.2,""),
-        Movie("La Guerre des étoiles",
-            "Il y a bien longtemps, dans une galaxie très lointaine... La guerre civile fait rage entre l'Empire galactique et l'Alliance rebelle...",
-            8.1, "")
-
-    )
-    /**/ fun getData(): List<Movie> {
-       val json: String="""[ {
+{
+    "page":1,
+    "total_results":48,
+    "total_pages":3,
+    "results":[ {
         "popularity": 61.024, "vote_count": 22079, "video": false, "poster_path": "\/ntpxTsTg3BsIRkMkNLffNjwftUf.jpg", "id": 24428, "adult": false, "backdrop_path": "\/v3A0T4fAz8xRugAkfUVkxGLd377.jpg", "original_language": "en", "original_title": "The Avengers", "genre_ids": [28, 12, 878], "title": "Avengers", "vote_average": 7.7, "overview": "Lorsque la sécurité et l’équilibre de la planète sont menacés par un ennemi d’un genre nouveau, Nick Fury, le directeur du SHIELD, l’agence internationale du maintien de la paix, réunit une équipe pour empêcher le monde de basculer dans le chaos. Partout sur Terre, le recrutement des nouveaux héros dont le monde a besoin commence…", "release_date": "2012-04-25"
     }
     ,
@@ -109,34 +81,5 @@ class SearchFragment : Fragment() {
     {
         "popularity": 0.6, "vote_count": 0, "video": false, "poster_path": null, "id": 648416, "adult": false, "backdrop_path": null, "original_language": "en", "original_title": "New Avengers", "genre_ids": [], "title": "New Avengers", "vote_average": 0, "overview": "", "release_date": ""
     }
-    ]"""
-        val googleJson : Gson =  Gson()
-        val listType = object : TypeToken<List<Movie>>() { }.type
-        val listMovies: List<Movie> = googleJson.fromJson<List<Movie>>(json, listType)
-       return listMovies
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-       super.onCreate(savedInstanceState)
-       retainInstance = true
-    }
-    override fun onCreateView(
-       inflater: LayoutInflater, container: ViewGroup?,
-       savedInstanceState: Bundle?
-    ): View? {
-       // Inflate the layout for this fragment
-       return inflater.inflate(R.layout.fragment_search, container, false)
-
-    }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-       super.onViewCreated(view, savedInstanceState)
-       listMoviesView.apply {
-           layoutManager = LinearLayoutManager(activity)
-           adapter = ListViewFilm(getData())
-       }
-    }
-
-    companion object {
-       fun newInstance(): SearchFragment = SearchFragment()
-    }
+    ]
 }

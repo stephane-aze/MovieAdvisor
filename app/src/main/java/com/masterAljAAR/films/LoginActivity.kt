@@ -80,7 +80,7 @@ class LoginActivity :  AppCompatActivity()  {
         when (task) {
             LoginTask -> if (isSuccess(response)) {
                 saveInfo(response)
-                Toast.makeText(this@LoginActivity, "Login Successfully!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, "L'authentification est réussi", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                 startActivity(intent)
                 this.finish()

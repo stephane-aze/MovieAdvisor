@@ -1,12 +1,15 @@
 package com.masterAljAAR.films
 import android.app.Activity
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.ListView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -23,6 +26,11 @@ class ListViewFilm(private val list: List<Movie>) :
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie: Movie = list[position]
+        val url: String = "https://image.tmdb.org/t/p/w500"+movie.poster_path
+        Glide.with(holder.itemView.context)
+            .load(url)
+            .placeholder(R.drawable.bobine_film)
+            .into(holder.itemView.findViewById(R.id.list_image))
         holder.bind(movie)
     }
 
@@ -51,9 +59,15 @@ class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
 
     fun bind(movie: Movie) {
         mTitleView?.text = movie.title
-        mDescriptionView?.text = movie.description
+        mDescriptionView?.text = movie.overview
         //mImageView?.text = movie.image
-        mNoteView?.text = movie.note.toString()
+        val url: String = "https://image.tmdb.org/t/p/w500"+movie.poster_path
+        /*Glide.with(movie.poster_path)
+            .load(url)
+            .placeholder(R.drawable.bobine_film)
+            .override(100,100)
+            .into(R.id.list_image)*/
+        mNoteView?.text = movie.vote_average.toString()
 
     }
 
