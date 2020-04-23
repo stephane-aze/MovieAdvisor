@@ -4,22 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_no_bar"
     tools:context=".HomeActivity">
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
-        android:layout_width="214dp"
-        android:layout_height="26dp"
+        android:layout_width="226dp"
+        android:layout_height="86dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="24dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_user" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
-        android:layout_width="202dp"
-        android:layout_height="30dp"
+        android:layout_width="227dp"
+        android:layout_height="37dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,6 +34,7 @@
         android:layout_marginTop="280dp"
         android:layout_marginBottom="32dp"
         android:text="@string/intro"
+        android:textColor="@color/design_default_color_background"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/new_user"
+        android:textColor="@color/design_default_color_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />

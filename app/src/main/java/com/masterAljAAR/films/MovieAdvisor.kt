@@ -9,5 +9,6 @@ class MovieAdvisor: Application() {
         super.onCreate()
         FacebookSdk.sdkInitialize(applicationContext)
         AppEventsLogger.activateApp(this)
+
     }
 }

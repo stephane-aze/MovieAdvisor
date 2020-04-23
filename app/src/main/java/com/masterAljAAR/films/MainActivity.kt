@@ -40,14 +40,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottom_nav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
         preferenceHelper = PreferenceHelper(this)
 
-        if (!preferenceHelper.getIsLogin()) {
-            val intent = Intent(applicationContext, HomeActivity::class.java)
-            startActivity(intent)
-            finish()/**/
-        }
             replaceFragment(SearchFragment())
 
     }
@@ -74,10 +68,10 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }/**/
-     fun logout() {
+     private fun logout() {
 
-        preferenceHelper!!.putIsLogin(false)
-                val intent = Intent(applicationContext, MainActivity::class.java)
+        preferenceHelper.putIsLogin(false)
+                val intent = Intent(applicationContext, HomeActivity::class.java)
                 startActivity(intent)
                 finish()
 
