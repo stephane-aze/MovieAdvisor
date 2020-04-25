@@ -9,13 +9,14 @@
 
     <ImageView
         android:id="@+id/logo_anime"
-        android:layout_width="104dp"
-        android:layout_height="166dp"
+        android:layout_width="277dp"
+        android:layout_height="394dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
+        app:layout_constraintHorizontal_bias="0.582"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_1" />
+        app:layout_constraintVertical_bias="0.732"
+        app:srcCompat="@drawable/logo_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,6 @@ class SplashScreenActivity: AppCompatActivity() {
     }
     private fun animateLogo(){
         var animation: Animation= AnimationUtils.loadAnimation(this, R.anim.anim)
-        animation.duration=timeout
         mLogo.startAnimation(animation)
     }
 

@@ -1,6 +1,6 @@
 package com.masterAljAAR.films
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.squareup.picasso.Picasso
@@ -38,8 +39,7 @@ class ProfilesFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         init(view)
         setDataOnView()
-
-
+        signOut!!.setOnClickListener { logout() }
 
     }
     private fun setDataOnView() {
@@ -50,8 +50,20 @@ class ProfilesFragment: Fragment() {
             profileName!!.text = acct.getDisplayName()
             profileEmail!!.text = acct.getEmail()
         }else if(preferenceHelper!!.getIsLogin()){
+            Glide.with(this)
+                .load("")
+                .placeholder(R.drawable.com_facebook_profile_picture_blank_portrait)
+                .into(profileImage!!)
             profileName!!.text = preferenceHelper!!.getNames()
             profileEmail!!.text = preferenceHelper!!.getEmail()
         }
     }
+    private fun logout() {
+
+        preferenceHelper!!.putIsLogin(false)
+        val intent = Intent(context, HomeActivity::class.java)
+        startActivity(intent)
+
+    }
+
 }

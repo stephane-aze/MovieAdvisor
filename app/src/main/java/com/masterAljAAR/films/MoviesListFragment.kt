@@ -1,17 +1,19 @@
 package com.masterAljAAR.films
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.fragment_movies_list.*
 
-import kotlinx.android.synthetic.main.fragment_search.*
-import org.json.JSONArray
 
 data class Movie(val title: String, val overview: String, val vote_average: Double, val poster_path: String )
 
@@ -124,18 +126,30 @@ class SearchFragment : Fragment() {
        inflater: LayoutInflater, container: ViewGroup?,
        savedInstanceState: Bundle?
     ): View? {
-       // Inflate the layout for this fragment
-       return inflater.inflate(R.layout.fragment_search, container, false)
+        // Inflate the layout for this fragment
+       return inflater.inflate(R.layout.fragment_movies_list, container, false)
 
     }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
        super.onViewCreated(view, savedInstanceState)
        listMoviesView.apply {
            layoutManager = LinearLayoutManager(activity)
-           adapter = ListViewFilm(getData())
+           adapter = ListViewFilm(getData()) { movieItem : Movie -> partItemClicked(movieItem) }
        }
+
     }
 
+    private fun partItemClicked(movieItem : Movie) {
+        //Toast.makeText(getContext(),  "Clicked: ${movieItem.title}", Toast.LENGTH_SHORT).show();
+        val intent = Intent(context, MovieActivity::class.java)
+        intent.putExtra("path",movieItem.poster_path)
+        intent.putExtra("title",movieItem.title)
+        intent.putExtra("description",movieItem.overview)
+        intent.putExtra("vote",movieItem.vote_average)
+        startActivity(intent)
+    }
     companion object {
        fun newInstance(): SearchFragment = SearchFragment()
     }

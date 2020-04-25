@@ -14,7 +14,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 
-class ListViewFilm(private val list: List<Movie>) :
+class ListViewFilm(private val listItem: List<Movie>,val clickListener: (Movie) -> Unit) :
     RecyclerView.Adapter<MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup,
@@ -25,17 +25,18 @@ class ListViewFilm(private val list: List<Movie>) :
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie: Movie = list[position]
-        val url: String = "https://image.tmdb.org/t/p/w500"+movie.poster_path
+        val movie: Movie = listItem[position]
+        val path_image: String=movie.poster_path
+        val url: String = "https://image.tmdb.org/t/p/w500$path_image"
         Glide.with(holder.itemView.context)
             .load(url)
             .placeholder(R.drawable.bobine_film)
             .into(holder.itemView.findViewById(R.id.list_image))
-        holder.bind(movie)
+        holder.bind(movie,clickListener)
     }
 
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int = listItem.size
 
 
 }
@@ -44,7 +45,6 @@ class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.mylist, parent, false)) {
     private var mTitleView: TextView? = null
     private var mDescriptionView: TextView? = null
-    private var mImageView: TextView? = null
     private var mNoteView: TextView? = null
 
 
@@ -57,16 +57,10 @@ class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
 
     }
 
-    fun bind(movie: Movie) {
+    fun bind(movie: Movie,clickListener: (Movie) -> Unit) {
         mTitleView?.text = movie.title
         mDescriptionView?.text = movie.overview
-        //mImageView?.text = movie.image
-        val url: String = "https://image.tmdb.org/t/p/w500"+movie.poster_path
-        /*Glide.with(movie.poster_path)
-            .load(url)
-            .placeholder(R.drawable.bobine_film)
-            .override(100,100)
-            .into(R.id.list_image)*/
+        itemView.setOnClickListener { clickListener(movie)}
         mNoteView?.text = movie.vote_average.toString()
 
     }
