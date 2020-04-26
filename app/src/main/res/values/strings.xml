@@ -8,6 +8,7 @@
     <string name="email">Email</string>
     <string name="connexion">Connexion</string>
     <string name="login_with">Se connecter avec</string>
+    <string name="menu_search">Recherche</string>
     <string name="new_user">Nouveau Compte</string>
     <string name="forgot_password">Mot de passe oublié?</string>
     <string name="inscription">Inscription</string>

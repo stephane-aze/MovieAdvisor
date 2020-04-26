@@ -52,6 +52,7 @@ class ProfilesFragment: Fragment() {
         }else if(preferenceHelper!!.getIsLogin()){
             Glide.with(this)
                 .load("")
+                .circleCrop()
                 .placeholder(R.drawable.com_facebook_profile_picture_blank_portrait)
                 .into(profileImage!!)
             profileName!!.text = preferenceHelper!!.getNames()
