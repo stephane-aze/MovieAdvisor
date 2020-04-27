@@ -31,6 +31,8 @@ class MovieActivity:  AppCompatActivity()  {
 
         Glide.with(this)
             .load(url)
+            //.override(200,100)
+            //.centerCrop()
             .placeholder(R.drawable.bobine_film)
             .into(findViewById(R.id.movie_image))
 

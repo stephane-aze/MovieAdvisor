@@ -14,8 +14,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 
-class ListViewFilm(private val listItem: List<Movie>,val clickListener: (Movie) -> Unit) :
-    RecyclerView.Adapter<MovieViewHolder>() {
+class ListViewFilm(private val listItem: MutableList<Movie>,val clickListener: (Movie) -> Unit) :
+     SearchAdapter<Movie>(listItem) {
 
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): MovieViewHolder{

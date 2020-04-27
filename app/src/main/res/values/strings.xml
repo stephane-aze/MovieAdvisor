@@ -25,4 +25,5 @@
     <string name="username">Nom</string>
     <string name="google_login">Se connecter avec google</string>
     <string name="movie_picture">Image du film</string>
+    <string name="cat_gorie">Catégorie</string>
 </resources>

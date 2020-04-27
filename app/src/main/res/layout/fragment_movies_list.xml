@@ -13,8 +13,10 @@
         android:layout_height="40dp"
         android:background="@drawable/border"
         android:backgroundTint="#12CFDCE8"
-        android:icon="@android:drawable/ic_menu_search"
+        android:clickable="true"
+        android:iconifiedByDefault="false"
         android:title="@string/menu_search"
+        android:id="@+id/search_movie"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
 

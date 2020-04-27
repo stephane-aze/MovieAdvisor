@@ -6,48 +6,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".MovieActivity">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/movie_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/movie_picture"
-                android:paddingLeft="16dp"
-                app:srcCompat="@drawable/bobine_film" />
-
-        </LinearLayout>
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/movie_image"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:contentDescription="@string/movie_picture"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/bobine_film" />
+
 
             <TextView
                 android:id="@+id/movie_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:paddingLeft="16dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/movie_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:paddingLeft="16dp" />
+                android:layout_gravity="left" />
 
 
             <TextView
@@ -55,11 +45,11 @@
                 android:layout_width="47dp"
                 android:layout_height="30dp"
                 android:layout_gravity="left"
-                android:paddingLeft="16dp"
                 android:textSize="12sp" />
+
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <FrameLayout
         android:layout_width="match_parent"

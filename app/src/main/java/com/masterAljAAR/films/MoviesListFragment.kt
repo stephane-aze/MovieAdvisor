@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,25 +14,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.fragment_movies_list.*
+import java.util.*
 
 
-data class Movie(val title: String, val overview: String, val vote_average: Double, val poster_path: String )
+data class Movie(val title: String, val overview: String, val vote_average: Double, val poster_path: String ):SearchAdapter.Searchable{
+    override fun getSearchCriteria(): String {
+        return title.toLowerCase(Locale.ROOT)
+    }
+}
 
 class SearchFragment : Fragment() {
 
-    private lateinit var rootView: View
-    private lateinit var recyclerView: RecyclerView
+    lateinit var searchMovieView: SearchView
+    lateinit var searchAdapter: ListViewFilm
 
-    private val nicCageMovies = listOf(
-        Movie("Star Wars VIII - Les derniers Jedi",
-            "Nouvel épisode de la saga. Les héros du Réveil de la force rejoignent les figures légendaires de la galaxie dans une aventure épique qui...",
-            7.2,""),
-        Movie("La Guerre des étoiles",
-            "Il y a bien longtemps, dans une galaxie très lointaine... La guerre civile fait rage entre l'Empire galactique et l'Alliance rebelle...",
-            8.1, "")
 
-    )
-    /**/ fun getData(): List<Movie> {
+    private fun getData(): MutableList<Movie> {
        val json: String="""[ {
         "popularity": 61.024, "vote_count": 22079, "video": false, "poster_path": "\/ntpxTsTg3BsIRkMkNLffNjwftUf.jpg", "id": 24428, "adult": false, "backdrop_path": "\/v3A0T4fAz8xRugAkfUVkxGLd377.jpg", "original_language": "en", "original_title": "The Avengers", "genre_ids": [28, 12, 878], "title": "Avengers", "vote_average": 7.7, "overview": "Lorsque la sécurité et l’équilibre de la planète sont menacés par un ennemi d’un genre nouveau, Nick Fury, le directeur du SHIELD, l’agence internationale du maintien de la paix, réunit une équipe pour empêcher le monde de basculer dans le chaos. Partout sur Terre, le recrutement des nouveaux héros dont le monde a besoin commence…", "release_date": "2012-04-25"
     }
@@ -113,14 +111,14 @@ class SearchFragment : Fragment() {
     }
     ]"""
         val googleJson : Gson =  Gson()
-        val listType = object : TypeToken<List<Movie>>() { }.type
-        val listMovies: List<Movie> = googleJson.fromJson<List<Movie>>(json, listType)
-       return listMovies
+        val listType = object : TypeToken<MutableList<Movie>>() { }.type
+        return googleJson.fromJson(json, listType)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
        super.onCreate(savedInstanceState)
        retainInstance = true
+
     }
     override fun onCreateView(
        inflater: LayoutInflater, container: ViewGroup?,
@@ -137,7 +135,30 @@ class SearchFragment : Fragment() {
        listMoviesView.apply {
            layoutManager = LinearLayoutManager(activity)
            adapter = ListViewFilm(getData()) { movieItem : Movie -> partItemClicked(movieItem) }
+
        }
+        searchAdapter = ListViewFilm(getData(),{ movieItem : Movie -> partItemClicked(movieItem) })
+        searchMovie(view)
+        //adapter=searchAdapter
+
+    }
+
+    private fun searchMovie(view: View) {
+
+        searchMovieView=view.findViewById(R.id.search_movie)
+        searchMovieView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                search(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                search(newText)
+                return false
+            }
+
+        })
+
 
     }
 
@@ -147,10 +168,16 @@ class SearchFragment : Fragment() {
         intent.putExtra("path",movieItem.poster_path)
         intent.putExtra("title",movieItem.title)
         intent.putExtra("description",movieItem.overview)
-        intent.putExtra("vote",movieItem.vote_average)
+        intent.putExtra("vote",movieItem.vote_average.toString())
         startActivity(intent)
     }
-    companion object {
-       fun newInstance(): SearchFragment = SearchFragment()
+    private fun search(s: String?) {
+        searchAdapter.search(s) {
+            // update UI on nothing found
+            Toast.makeText(context, "Aucun résultat", Toast.LENGTH_SHORT).show()
+        }
+        listMoviesView.adapter=searchAdapter
+
     }
+
 }
