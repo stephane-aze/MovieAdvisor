@@ -1,18 +1,13 @@
 package com.masterAljAAR.films
 
+import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.facebook.*
-import com.facebook.GraphRequest.GraphJSONObjectCallback
-import com.facebook.login.LoginManager
-import com.facebook.login.LoginResult
-import com.facebook.login.widget.LoginButton
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.android.extension.responseJson
 import org.json.JSONException
@@ -28,6 +23,7 @@ class LoginActivity :  AppCompatActivity()  {
     lateinit var btnlogin : Button
     private val LoginTask = 1
     private var preferenceHelper: PreferenceHelper? = null
+    private var mProgressBar: ProgressBar? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,41 +47,47 @@ class LoginActivity :  AppCompatActivity()  {
         loginEmail = findViewById(R.id.LoginEmail)
         btnlogin = findViewById(R.id.login)
         preferenceHelper = PreferenceHelper(this)
+        mProgressBar = findViewById(R.id.progressBar)
+
     }
 
 
     @Throws(IOException::class, JSONException::class)
     private fun login() {
+        showSimpleProgressDialog()
 
-
-        try {
 
             Fuel.post(LoginURL, listOf(
                 "email" to  loginEmail.text.toString()
                 , "password" to  loginPassword.text.toString()
             )).responseJson { request, response, result ->
-                Log.d("plzzzzz", result.get().content)
-                onTaskCompleted(result.get().content,LoginTask)
+                Log.d("plzzzzz", response.toString())
+                if(response.statusCode!=400){
+                    Log.d("plzzzzz", result.get().content)
+                    onTaskCompleted(result.get().content,LoginTask)
+                }else{
+                    Toast.makeText(this@LoginActivity, getErrorMessage(), Toast.LENGTH_SHORT).show()
+                }
             }
-        } catch (e: Exception) {
-
+        /*    try {} catch (e: Exception) {
+                getErrorMessage()
         } finally {
 
-        }
+        }*/
     }
 
     private fun onTaskCompleted(response: String, task: Int) {
         Log.d("responsejson", response)
-
+        removeSimpleProgressDialog()  //will remove progress dialog
         when (task) {
             LoginTask -> if (isSuccess(response)) {
                 saveInfo(response)
                 Toast.makeText(this@LoginActivity, "L'authentification est réussi", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                 startActivity(intent)
-                this.finish()
+                finish()
             } else {
-                Toast.makeText(this@LoginActivity, getErrorMessage(response), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, getErrorMessage(), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -108,7 +110,7 @@ class LoginActivity :  AppCompatActivity()  {
 
         try {
             val jsonObject = JSONObject(response)
-            if(jsonObject.optString("email")!=""){
+            if(jsonObject.optString("token")!=""){
                 return true
             }
             return false
@@ -120,17 +122,19 @@ class LoginActivity :  AppCompatActivity()  {
         return false
     }
 
-    private fun getErrorMessage(response: String): String {
-        try {
-            val jsonObject = JSONObject(response)
-            return jsonObject.getString("status")
-
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
-
-        return "No data"
+    private fun getErrorMessage(): String {
+        removeSimpleProgressDialog()
+        return "Aucune information"
+    }
+    fun showSimpleProgressDialog() {
+                val visibility = if (mProgressBar!!.visibility == View.GONE) View.VISIBLE else View.GONE
+                mProgressBar!!.visibility = visibility
     }
 
+    fun removeSimpleProgressDialog() {
+        if (mProgressBar!!.visibility==View.VISIBLE) {
+            mProgressBar!!.visibility=View.GONE
+        }
+    }
 
 }

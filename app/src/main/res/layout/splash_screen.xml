@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/background_no_bar"
-    tools:context=".SplashScreenActivity"
+    tools:context=".ui.SplashScreenActivity"
     android:layout_height="match_parent">
 
     <ImageView

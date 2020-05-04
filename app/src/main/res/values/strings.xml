@@ -15,10 +15,9 @@
     <string name="search">Recherche</string>
     <string name="messages">Mes avis</string>
     <!-- Facebook -->
-    <string name="facebook_app_id">1336244529913957</string>
-    <string name="fb_login_protocol_scheme">fb1336244529913957</string>
+    <string name="facebook_app_id">2548939918691547</string>
+    <string name="fb_login_protocol_scheme">fb2548939918691547</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profiles">Profil</string>
     <string name="repeat_password">Confirmation du mot de passe</string>
@@ -26,4 +25,7 @@
     <string name="google_login">Se connecter avec google</string>
     <string name="movie_picture">Image du film</string>
     <string name="cat_gorie">Catégorie</string>
+    <string name="cancel">Annuler</string>
+    <string name="send">Envoyer</string>
+
 </resources>

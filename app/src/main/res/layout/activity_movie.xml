@@ -31,6 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -47,14 +48,35 @@
                 android:layout_gravity="left"
                 android:textSize="12sp" />
 
+            <Button
+                android:id="@+id/btn_create_opinion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Donner son avis" />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/tilte_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Commentaires"
+            android:textSize="18sp" />
+
+        <FrameLayout
+            android:id="@+id/frame_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+    </LinearLayout>
+
 
 </LinearLayout>
