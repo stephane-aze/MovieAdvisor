@@ -14,6 +14,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="24dp"
 
+        android:gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_user" />
@@ -34,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="280dp"
         android:layout_marginBottom="32dp"
+        android:gravity="center_horizontal"
         android:text="@string/intro"
         android:textColor="@color/design_default_color_background"
         android:textSize="24sp"
@@ -49,9 +51,9 @@
         android:layout_marginTop="29dp"
         android:layout_marginBottom="332dp"
         android:background="@drawable/border"
-        android:backgroundTint="#1E88E5"
+        android:backgroundTint="@color/btnBlue"
         android:text="@string/login"
-        android:textColor="@color/cardview_light_background"
+        android:textColor="@color/design_default_color_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
         android:text="@string/new_user"
         android:textColor="@color/design_default_color_background"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,10 +77,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
+        android:gravity="center_horizontal"
         android:text="@string/d_connexion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="180dp"
+        android:layout_height="157dp"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logo_1"
+        android:contentDescription="@string/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,12 +8,13 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/logo_anime"
-        android:layout_width="277dp"
-        android:layout_height="394dp"
+        android:id="@+id/animLogo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_marginEnd="8dp"
-        android:foregroundGravity="center"
+
         android:scaleType="fitCenter"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.531"

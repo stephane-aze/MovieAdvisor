@@ -12,49 +12,55 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
-        <LinearLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/movie_image"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="300dp"
                 android:contentDescription="@string/movie_picture"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/bobine_film" />
-
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@id/movie_title"
+                app:srcCompat="@drawable/bobine_film"
+                tools:layout_editor_absoluteX="34dp" />
 
             <TextView
                 android:id="@+id/movie_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="8dp"
+                android:background="#77AAAAAA"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/movie_description"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/movie_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left" />
-
+                app:layout_constraintBottom_toTopOf="@+id/movie_note" />
 
             <TextView
                 android:id="@+id/movie_note"
                 android:layout_width="47dp"
                 android:layout_height="30dp"
-                android:layout_gravity="left"
-                android:textSize="12sp" />
+                android:textSize="@dimen/rating_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/btn_create_opinion"
+                app:layout_constraintEnd_toEndOf="@+id/movie_description" />
 
             <Button
                 android:id="@+id/btn_create_opinion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Donner son avis" />
-
-        </LinearLayout>
+                android:text="@string/give_opinion"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -67,7 +73,7 @@
             android:id="@+id/tilte_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Commentaires"
+            android:text="@string/title_commentaires"
             android:textSize="18sp" />
 
         <FrameLayout

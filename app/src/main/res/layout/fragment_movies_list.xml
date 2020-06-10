@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical"
     tools:context=".fragments.SearchFragment">
 
@@ -12,9 +13,10 @@
         android:id="@+id/search_movie"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@drawable/border"
+        android:background="@android:color/transparent"
         android:backgroundTint="#12CFDCE8"
-        android:clickable="true"
+        android:clickable="false"
+        android:focusable="false"
         android:iconifiedByDefault="false"
         android:title="@string/menu_search"
         app:actionViewClass="android.widget.SearchView"

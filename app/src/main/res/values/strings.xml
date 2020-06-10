@@ -24,8 +24,15 @@
     <string name="username">Nom</string>
     <string name="google_login">Se connecter avec google</string>
     <string name="movie_picture">Image du film</string>
-    <string name="cat_gorie">Catégorie</string>
+    <string name="films">Films</string>
     <string name="cancel">Annuler</string>
     <string name="send">Envoyer</string>
+    <string name="logo">Logo</string>
+    <string name="image_film">image_film</string>
+    <string name="give_opinion">Donner son avis</string>
+    <string name="title_commentaires">Commentaires</string>
+    <string name="title_category">Title</string>
+    <string name="thumbnail_title_movie">Titre</string>
+    <string name="title_fragment_category">Nos films par catégorie</string>
 
 </resources>

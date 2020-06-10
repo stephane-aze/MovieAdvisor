@@ -2,17 +2,17 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/app_bar_search"
-        android:icon="@drawable/ic_search_black_24dp"
-        android:title="@string/search"
-        android:state_pressed="true" />
+
     <item
         android:id="@+id/item_bande_film"
         android:icon="@drawable/icon_bande_film"
         android:state_pressed="true"
-        android:title="@string/cat_gorie" />
-
+        android:title="@string/films" />
+    <item
+        android:id="@+id/app_bar_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="@string/search"
+     />
     <item
         android:id="@+id/messages"
         android:icon="@android:drawable/stat_notify_chat"

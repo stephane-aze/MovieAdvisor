@@ -67,9 +67,6 @@ dependencies {
     //implementation 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
     //implementation 'com.jakewharton.rxbinding3:rxbinding-material:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
-    //Picasso (for images)
-    implementation 'com.squareup.picasso:picasso:2.71828'
-
     //Room
     /*implementation "androidx.room:room-ktx:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"

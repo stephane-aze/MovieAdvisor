@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/design_default_color_on_primary"
-
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
@@ -24,7 +23,7 @@
         android:layout_marginTop="318dp"
         android:layout_marginEnd="175dp"
         android:layout_marginBottom="283dp"
-        android:progressBackgroundTint="#FFFFFF"
+        android:progressBackgroundTint="@color/design_default_color_background"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,8 +36,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         android:background="@color/colorPrimary"
-        app:itemIconTint="@android:color/background_light"
-        app:itemTextColor="@android:color/white"
+        app:itemIconTint="@color/design_default_color_background"
+        app:itemTextColor="@color/design_default_color_background"
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toStartOf="parent"

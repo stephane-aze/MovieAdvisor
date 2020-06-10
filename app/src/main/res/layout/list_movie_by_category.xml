@@ -9,28 +9,22 @@
     app:cardCornerRadius="5dp"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+
     <TextView
         android:id="@+id/title_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:text="Title"
+        android:text="@string/title_category"
+        android:textSize="@dimen/title_movie_size"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listMovieForCategory"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:padding="20dp"
-        android:layout_marginTop="30dp"
-        app:layout_editor_absoluteX="74dp"
-        android:orientation="horizontal" />
-    </RelativeLayout>
+    android:id="@+id/listMovieForCategory"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        android:layout_marginTop="12dp"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    app:layout_editor_absoluteX="74dp" />
 
 </androidx.cardview.widget.CardView>
