@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.masterprojet.films.fragments.Category
-import com.masterprojet.films.fragments.Movie
+import com.masterprojet.films.model.Category
+import com.masterprojet.films.model.Movie
+
 import kotlinx.android.synthetic.main.list_movie_by_category.view.*
 
-class ListMovieByCategory(private val listItemByCategory: MutableList<Category>,val context: Context): RecyclerView.Adapter<CategoryViewHolder>() {
+class ListMovieByCategory(private val listItemByCategory: MutableList<Category>, val context: Context): RecyclerView.Adapter<CategoryViewHolder>() {
     private val viewPool = RecyclerView.RecycledViewPool()
     private val mContext = context
     override fun onCreateViewHolder(parent: ViewGroup,

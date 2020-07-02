@@ -34,5 +34,21 @@
     <string name="title_category">Title</string>
     <string name="thumbnail_title_movie">Titre</string>
     <string name="title_fragment_category">Nos films par catégorie</string>
-
+    <string name="likes">Likes</string>
+    <string name="rating">Notes</string>
+    <string name="views">Vues</string>
+    <string name="profile_name">My name</string>
+    <string name="profile_email">My email</string>
+    <string name="years">Années</string>
+    <string name="profiles_sex">N/A</string>
+    <string name="simple_date_format">yyyyMMdd_HHmmss</string>
+    <string name="title_dialog_rating">Ajouter votre avis</string>
+    <string name="title_list_message">Vos messages</string>
+    <string name="text_message">message...</string>
+    <string name="avatar">avatar</string>
+    <string name="btn_edit_profile_dialog">Modifier</string>
+    <string name="description_edit_btn">Button modifier user</string>
+    <string name="sex">Sexe</string>
+    <string name="text_explain_forgot_password">Vous allez trouvé un lien par mail pour changer votre mot de passe</string>
+    <string name="valider">valider</string>
 </resources>

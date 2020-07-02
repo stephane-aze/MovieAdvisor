@@ -10,7 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.masterprojet.films.fragments.Movie
+import com.masterprojet.films.model.Movie
+
 
 class ListThumbnailMovie (private val children : MutableList<Movie>, val context: Context, private val clickListener: (Movie) -> Unit)
     : RecyclerView.Adapter<ListThumbnailMovie.ViewHolder>(){

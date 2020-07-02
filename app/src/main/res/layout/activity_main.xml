@@ -5,7 +5,7 @@
     android:id="@+id/fragmentContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_on_primary"
+    android:background="@color/background_black"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
@@ -23,7 +23,7 @@
         android:layout_marginTop="318dp"
         android:layout_marginEnd="175dp"
         android:layout_marginBottom="283dp"
-        android:progressBackgroundTint="@color/design_default_color_background"
+        android:progressBackgroundTint="@color/colorAccent"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,12 +34,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@color/design_default_color_background"
-        app:itemTextColor="@color/design_default_color_background"
+        android:background="#C45A628F"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_items" />

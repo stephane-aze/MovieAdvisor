@@ -11,11 +11,13 @@ import com.google.gson.reflect.TypeToken
 import com.masterprojet.films.ListMovieByCategory
 import com.masterprojet.films.R
 import com.masterprojet.films.helpers.*
+import com.masterprojet.films.model.Category
+import com.masterprojet.films.model.Movie
 
 import kotlinx.android.synthetic.main.fragment_category_movie_list.*
 
 
-data class Category(val title: String, val listMovie: MutableList<Movie> )
+
 
 class CategoryMovieFragment : Fragment() {
 

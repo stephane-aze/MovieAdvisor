@@ -6,32 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.chip.ChipGroup
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.masterprojet.films.ListViewFilm
 import com.masterprojet.films.MovieActivity
 import com.masterprojet.films.R
-import com.masterprojet.films.SearchAdapter
+import com.masterprojet.films.helpers.jsonMovieList
+import com.masterprojet.films.model.Movie
 import kotlinx.android.synthetic.main.fragment_movies_list.*
 import java.util.*
-import com.masterprojet.films.helpers.*
 
-
-data class Movie(val id:Int,val title: String, val overview: String, val vote_average: Double, val poster_path: String ):
-    SearchAdapter.Searchable {
-    override fun getSearchCriteria(): String {
-        return title.toLowerCase(Locale.ROOT)
-    }
-}
 
 class SearchFragment : Fragment() {
 
     private lateinit var searchMovieView: SearchView
     private lateinit var searchAdapter: ListViewFilm
-
+    private lateinit var chipGroup: ChipGroup
+    private lateinit var spinner: Spinner
 
     private fun getData(): MutableList<Movie> {
         val googleJson =  Gson()
@@ -56,9 +51,16 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
        super.onViewCreated(view, savedInstanceState)
-       listMoviesView.apply {
-           layoutManager = LinearLayoutManager(activity)
-           adapter =
+        initView(view)
+        val itemsSpinner= mutableListOf<Int>()
+        val yearCurrent=Calendar.getInstance().get(Calendar.YEAR)
+        for(x in yearCurrent until 1888){
+            itemsSpinner.add(x)
+
+        }
+        eventsCheckedChip()
+        listMoviesView.apply {
+            adapter =
                ListViewFilm(getData()) { movieItem: Movie ->
                    partItemClicked(movieItem)
                }
@@ -70,6 +72,42 @@ class SearchFragment : Fragment() {
             }
         searchMovie(view)
 
+    }
+
+    private fun initView(view: View) {
+        chipGroup = view.findViewById(R.id.chip_group)
+        spinner = view.findViewById(R.id.spinner_years)
+    }
+
+    private fun eventsCheckedChip() {
+        chipGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.selected_view -> sortBy(1)
+                R.id.selected_rating -> sortBy(2)
+                R.id.selected_likes -> sortBy(3)
+                else -> {
+                    listMoviesView.adapter =
+                        ListViewFilm(getData()) { movieItem: Movie ->
+                            partItemClicked(movieItem)
+                        }
+                }
+            }
+        }
+    }
+
+    private fun sortBy(indicator:Int) {
+        val list=getData()
+        list.sortByDescending{
+            when(indicator){
+                1->  it.popularity
+                2->  it.vote_count
+                else -> it.vote_average
+            }
+        }
+        listMoviesView.adapter =
+            ListViewFilm(list) { movieItem: Movie ->
+                partItemClicked(movieItem)
+            }
     }
 
     private fun searchMovie(view: View) {

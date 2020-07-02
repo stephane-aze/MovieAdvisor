@@ -13,10 +13,7 @@ import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.masterprojet.films.fragments.CategoryMovieFragment
-import com.masterprojet.films.fragments.ProfilesFragment
-import com.masterprojet.films.fragments.SearchFragment
-import com.masterprojet.films.fragments.MessengerFragment
+import com.masterprojet.films.fragments.*
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -49,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.messages -> {
-                    replaceFragment(MessengerFragment())
+                    replaceFragment(HistoryMessageFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.app_bar_search -> {
@@ -69,7 +66,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottom_nav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        preferenceHelper = PreferenceHelper(this)
 
         parametersForStatusBar()
         replaceFragment(CategoryMovieFragment())
@@ -88,42 +84,5 @@ class MainActivity : AppCompatActivity() {
         )
         return true
     }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-             R.id.action_logout -> {
-                 logout()
-
-                 true
-                }
-             R.id.menu_search -> {
-
-                    val mSearchView : SearchView=item.actionView as SearchView
-
-                    mSearchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-                        override fun onQueryTextChange(newText: String?): Boolean {
-                            Log.i("TAG","Llego al querysubmit")
-                            return true
-                        }
-
-                        override fun onQueryTextSubmit(query: String?): Boolean {
-                            Log.i("TAG","Llego al querytextchange")
-                            return false
-                        }
-                    })
-                    return true
-
-             }
-                else -> super.onOptionsItemSelected(item)
-        }
-    }/**/
-    private fun logout() {
-
-        preferenceHelper.putIsLogin(false)
-             val intent = Intent(applicationContext, HomeActivity::class.java)
-             startActivity(intent)
-             finish()
-
-    }
-
 
 }

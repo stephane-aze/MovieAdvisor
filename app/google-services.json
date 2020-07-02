@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "748667578892",
-    "firebase_url": "https://filmadvisor-b6e38.firebaseio.com",
-    "project_id": "filmadvisor-b6e38",
-    "storage_bucket": "filmadvisor-b6e38.appspot.com"
+    "project_number": "63073833042",
+    "firebase_url": "https://movieadvisor-1588499691257.firebaseio.com",
+    "project_id": "movieadvisor-1588499691257",
+    "storage_bucket": "movieadvisor-1588499691257.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:748667578892:android:112f590709731185a31c29",
+        "mobilesdk_app_id": "1:63073833042:android:2c13c269618c9760d34f8b",
         "android_client_info": {
           "package_name": "com.masterAljAAR.films"
         }
       },
       "oauth_client": [
         {
-          "client_id": "748667578892-2ailpp2t08p16u7l48ih6jsmlndtkr77.apps.googleusercontent.com",
+          "client_id": "63073833042-44op2l1qsdt70qb9dsatlbmhkrpiocbt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC8e1xzdXKNDTKksV01lRCKjYvqdzeLPrM"
+          "current_key": "AIzaSyAbXE_kvXF4WGlBtXKebmfipcCZ6K8yS28"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "748667578892-2ailpp2t08p16u7l48ih6jsmlndtkr77.apps.googleusercontent.com",
+              "client_id": "63073833042-44op2l1qsdt70qb9dsatlbmhkrpiocbt.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

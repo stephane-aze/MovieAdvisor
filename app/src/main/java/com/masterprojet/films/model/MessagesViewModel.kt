@@ -28,7 +28,9 @@ class MessagesViewModel : ViewModel() {
     fun getMessagesAll() : MutableList<Message>{
             //val user_img: String?, val user_name: String?, val rating: Double, val text: String, val dateTime: String
 
-                val json: String="""[]"""
+                val json: String="""[{
+                "user_img":"","user_name":"aze","rating":3.0,"text":"blabala","datetime":"2018-11-03T12:45:30","movieId":299536}
+                ]"""
                 val googleJson : Gson =  Gson()
                 val listType = object : TypeToken<MutableList<Message>>() { }.type
                 return  googleJson.fromJson(json, listType)

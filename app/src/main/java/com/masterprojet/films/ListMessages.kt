@@ -26,7 +26,7 @@ class ListMessages(private val listItem: MutableList<Message>): RecyclerView.Ada
 
 }
 class MessagesViewHolder(inflater: LayoutInflater, parent: ViewGroup):
-    RecyclerView.ViewHolder(inflater.inflate(R.layout.list_messages, parent, false)){
+    RecyclerView.ViewHolder(inflater.inflate(R.layout.item_message, parent, false)){
     private var usernameView: TextView = itemView.findViewById(R.id.username_message)
     private var messageView: TextView = itemView.findViewById(R.id.text_message)
     private var ratingBar: RatingBar = itemView.findViewById(R.id.ratingBar2)

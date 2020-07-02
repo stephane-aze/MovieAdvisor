@@ -7,6 +7,10 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.masterprojet.films.HomeActivity
 import com.masterprojet.films.MainActivity
 import com.masterprojet.films.PreferenceHelper
@@ -16,6 +20,7 @@ import com.masterprojet.films.R
 class SplashScreenActivity: AppCompatActivity() {
     private lateinit var preferenceHelper: PreferenceHelper
     private lateinit var mLogo : ImageView
+    private lateinit var auth: FirebaseAuth
     private val timeout: Long =2500
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,31 +28,26 @@ class SplashScreenActivity: AppCompatActivity() {
         setContentView(R.layout.splash_screen)
         init()
         animateLogo()
-        redirectionActivity()
-
-    }
-
-    private fun redirectionActivity() {
-        preferenceHelper = PreferenceHelper(this)
-
+        val currentUser = auth.currentUser
         Handler().postDelayed({
-            if (!preferenceHelper.getIsLogin()) {
-                val intent = Intent(applicationContext, HomeActivity::class.java)
+            currentUser?.also{
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-                finish()
-            } else {
-                val intent = Intent(applicationContext, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-
+                return@postDelayed
             }
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+
         }, timeout)
 
     }
 
+
     private fun init(){
         mLogo = findViewById(R.id.animLogo)
+        auth = Firebase.auth
     }
+
     private fun animateLogo(){
         val animation: Animation= AnimationUtils.loadAnimation(this,
             R.anim.anim

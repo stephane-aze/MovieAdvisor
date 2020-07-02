@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp"
     android:layout_gravity="center_horizontal"
-    app:cardElevation="5dp"
-    app:cardUseCompatPadding="true"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -20,6 +21,7 @@
             android:layout_marginBottom="8dp"
             android:textSize="@dimen/title_movie_size_list"
             android:textStyle="bold"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toTopOf="@+id/list_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/list_image"
@@ -38,6 +40,8 @@
 
         <TextView
             android:id="@+id/list_description"
+            android:textColor="@android:color/white"
+
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxLength="255"
@@ -52,6 +56,8 @@
             android:layout_height="30dp"
             android:maxLength="50"
             android:textSize="@dimen/rating_size"
+            android:textColor="@android:color/white"
+
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

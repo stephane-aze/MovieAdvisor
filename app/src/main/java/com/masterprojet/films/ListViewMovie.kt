@@ -6,7 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.masterprojet.films.fragments.Movie
+import com.masterprojet.films.model.Movie
 
 
 class ListViewFilm(private val listItem: MutableList<Movie>, private val clickListener: (Movie) -> Unit) :
@@ -31,7 +31,7 @@ class ListViewFilm(private val listItem: MutableList<Movie>, private val clickLi
 }
 
 class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
-    RecyclerView.ViewHolder(inflater.inflate(R.layout.list_all_movies, parent, false)) {
+    RecyclerView.ViewHolder(inflater.inflate(R.layout.item_movie, parent, false)) {
     private var mTitleView: TextView = itemView.findViewById(R.id.list_title)
     private var mDescriptionView: TextView = itemView.findViewById(R.id.list_description)
     private var mNoteView: TextView= itemView.findViewById(R.id.list_note)
